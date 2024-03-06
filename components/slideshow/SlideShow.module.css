@@ -1,0 +1,142 @@
+.wrapper {
+  @apply overflow-hidden flex flex-col gap-6 relative ;
+}
+
+.wrapper:before {
+  @apply absolute w-40 h-full left-0 z-[1];
+  content: "";
+  background-image: linear-gradient(
+    90deg,
+    rgb(0, 0, 0) 0%,
+    rgba(16, 16, 16, 0) 80%
+  );
+}
+.wrapper:after {
+  @apply absolute w-40 h-full right-0 z-[1];
+  content: "";
+  background-image: linear-gradient(
+    270deg,
+    rgb(0, 0, 0) 0%,
+    rgba(16, 16, 16, 0) 80%
+  );
+}
+
+@media (max-width: 768px) {
+  .wrapper:before {
+    @apply w-20;
+  }
+  .wrapper:after {
+    @apply w-20;
+  }
+}
+
+.right-to-left {
+    animation: scrolling 50s linear infinite;
+}
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+        calc(-100%)
+    );
+  }
+}
+.left-to-right {
+    animation: scrolling 50s linear infinite reverse;
+}
+.left-to-right:hover {
+  animation-play-state: paused;
+}
+.right-to-left:hover {
+  animation-play-state: paused;
+    
+}
+@media (min-width: 1920px) {
+  .right-to-left {
+    animation: scrolling 100s linear infinite;
+  }
+  .left-to-right {
+    animation: scrolling 100s linear infinite reverse;
+  }
+}
+
+/* Slide Player Loading  */
+
+@keyframes quiet {
+    25%{
+      transform: scaleY(.6);
+    }
+    50%{
+      transform: scaleY(.4);
+    }
+    75%{
+      transform: scaleY(.8);
+    }
+  }
+  
+  @keyframes normal {
+    25%{
+      transform: scaleY(1);
+    }
+    50%{
+      transform: scaleY(.4);
+    }
+    75%{
+      transform: scaleY(.6);
+    }
+  }
+  @keyframes loud {
+    25%{
+      transform: scaleY(1);
+    }
+    50%{
+      transform: scaleY(.4);
+    }
+    75%{
+      transform: scaleY(1.2);
+    }
+  }
+
+  .slidePlayerContainer{
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    --boxSize: 8px;
+    --gutter: 4px;
+    width: calc((var(--boxSize) + var(--gutter)) * 5);
+  }
+  
+  .slidePlayer{
+    transform: scaleY(.4);
+    height: 100%;
+    width: var(--boxSize);
+    @apply bg-primary;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    border-radius: 8px;
+  }
+  
+  .slidePlayer1{
+    animation-name: quiet;
+  }
+  
+  .slidePlayer2{
+    animation-name: normal;
+  }
+  
+  .slidePlayer3{
+    animation-name: quiet;
+  }
+  
+  .slidePlayer4{
+    animation-name: loud;
+  }
+  
+  .slidePlayer5{
+    animation-name: quiet;
+  }
+
+  /* Slide Player Loading  */
